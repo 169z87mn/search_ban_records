@@ -37,6 +37,8 @@ class TwitterAPI:
                         tweet_count += 1
                         if tweet.retweeted_status:
                             retweet_count += 1
+                    else:
+                        break
                 except AttributeError:
                     pass
                 max_id = tweet.id - 1
