@@ -31,9 +31,10 @@ export default {
     search () {
       console.log("search")
       let data = {
+        "withCredentials": true,
         "user_name": this.user_name,
       }
-      axios.get("/stg/" + this.user_name, data).then((result) => {
+      axios.get("https://yxm7lbxscl.execute-api.ap-northeast-1.amazonaws.com/stg/" + this.user_name, data).then((result) => {
         this.result = result.data
         this.resultModel = true
       }).catch((err) => {

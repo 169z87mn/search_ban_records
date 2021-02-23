@@ -8,6 +8,12 @@ def lambda_handler(event, context):
 
     response = {
         'statusCode': 200,
+        'headers': {
+            "Access-Control-Allow-Headers" : "Content-Type",
+            "Access-Control-Allow-Origin": "http://searchbanrecords.s3-website-ap-northeast-1.amazonaws.com",
+            "Access-Control-Allow-Methods": "GET,OPTIONS",
+            "Access-Control-Allow-Credentials": True
+        },
         'body': None,
     }
 
