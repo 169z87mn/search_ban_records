@@ -13,7 +13,7 @@ def lambda_handler(event, context):
 
     body = {
         'user_name': user_name,
-        'exist': 'true',
+        'exist': exist_user(user_name),
         'search_ban': is_search_ban(user_name),
         'tweet_count': None,
         'retweet_count': None,
@@ -21,14 +21,10 @@ def lambda_handler(event, context):
 
     tweet_count = api.get_24h_tweet_user(user_name)
 
-    if tweet_count[0] == 0:
-        body['exist'] = 'false'
-        response['statusCode'] = 400
-        response['body'] = json.dumps(body)
-        return response
-
     body['tweet_count'] = tweet_count[0]
     body['retweet_count'] = tweet_count[1]
+
+
     response['body'] = json.dumps(body)
 
     return response
@@ -40,3 +36,9 @@ def is_search_ban(user_name: str) -> bool:
         return False
     
     return True
+
+
+def exist_user(user_name: str) -> bool:
+    if api.get_user(user_name):
+        return True
+    return False
