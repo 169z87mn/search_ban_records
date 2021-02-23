@@ -35,8 +35,8 @@ class TwitterAPI:
                 try:
                     if yesterday_utc <= tweet.created_at:
                         tweet_count += 1
-                    if tweet.retweeted_status:
-                        retweet_count += 1
+                        if tweet.retweeted_status:
+                            retweet_count += 1
                 except AttributeError:
                     pass
                 max_id = tweet.id - 1
