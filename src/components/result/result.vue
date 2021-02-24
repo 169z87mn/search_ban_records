@@ -1,10 +1,8 @@
 <template>
-  <v-simple-table>
+  <v-simple-table class="table">
     <thead>
       <tr>
-        <th class="text-center">
-          Item
-        </th>
+        <th></th>
         <th class="text-center">
           Result
         </th>
@@ -45,5 +43,7 @@ export default {
 </script>
 
 <style>
-
+.table {
+  margin: 2rem;
+}
 </style>

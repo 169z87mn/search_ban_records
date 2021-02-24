@@ -1,7 +1,7 @@
 <template>
-  <v-app>
+  <v-app class="main">
     <v-main>
-      <MainPage />
+        <MainPage />
     </v-main>
   </v-app>
 </template>
@@ -19,3 +19,9 @@ export default {
   }),
 };
 </script>
+
+<style>
+.main {
+  min-width: 460px;
+}
+</style>
