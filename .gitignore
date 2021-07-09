@@ -23,8 +23,8 @@ pnpm-debug.log*
 *.sw?
 
 # Python package
-api/package
-api/*.zip
+lambda/package
+lambda/*.zip
 
 # memo
 memo.md
