@@ -15,11 +15,11 @@
       </tr>
       <tr>
         <td>Exist</td>
-        <td class="text-center">{{ result.exist }}</td>
+        <td class="text-center">{{ String(result.exist) }}</td>
       </tr>
       <tr>
         <td>Search BAN</td>
-        <td class="text-center">{{ result.search_ban }}</td>
+        <td class="text-center">{{ String(result.search_ban) }}</td>
       </tr>
       <tr>
         <td>24h Tweet</td>

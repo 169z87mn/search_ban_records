@@ -1,9 +1,8 @@
-from abc import ABCMeta
 from dataclasses import dataclass
 from typing import Any, Dict
 
 
-class Response(ABCMeta):
+class Response():
     pass
 
 
@@ -27,7 +26,7 @@ class LambdaApiResponse(Response):
 @dataclass
 class SearchBanRecordResponse(Response):
     user_name: str
-    exist_user: bool
-    is_search_ban: bool
+    exist: bool
+    search_ban: bool
     tweet_count: int
     retweet_count: int

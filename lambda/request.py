@@ -1,8 +1,7 @@
-from abc import ABCMeta
 from dataclasses import dataclass
 
 
-class Reqeust(ABCMeta):
+class Reqeust():
     pass
 
 
