@@ -1,11 +1,9 @@
 import os
-import tweepy
 import datetime
-import json
-
+from typing import Tuple
+import tweepy
 
 class TwitterAPI:
-    """."""
 
     def __init__(self):
         consumer_key = os.getenv('CONSUMER_KEY')
@@ -23,7 +21,7 @@ class TwitterAPI:
         return self.api.search(q=query, count=1)
 
 
-    def get_24h_tweet_user(self, user_name: str) -> [int, int]:
+    def get_24h_tweet_user(self, user_name: str) -> Tuple[int, int]:
         yesterday_utc = datetime.datetime.now() + datetime.timedelta(days=-1)
         tweet_count = 0
         retweet_count = 0
@@ -32,18 +30,13 @@ class TwitterAPI:
         while True: 
             user_timeline = self.api.user_timeline(screen_name=user_name, include_rts=True, max_id=max_id)
             for tweet in user_timeline:
-                try:
-                    if yesterday_utc <= tweet.created_at:
-                        tweet_count += 1
-                        if tweet.retweeted_status:
-                            retweet_count += 1
-                    else:
-                        break
-                except AttributeError:
-                    pass
+                if yesterday_utc <= tweet.created_at:
+                    tweet_count   += 1
+                    retweet_count += 1 if hasattr(tweet, 'retweeted_status') else 0
+                else:
+                    return tweet_count, retweet_count
+            else:
                 max_id = tweet.id - 1
-            
-            if user_timeline[len(user_timeline) - 1].created_at < yesterday_utc:
-                break
-        
-        return tweet_count, retweet_count
+
+        return 0, 0
+
